@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto Colombia V1 Roleplay — Normativa General</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#05070d;
+    --bg2:#070b15;
+    --panel:#0a0f1e;
+    --panel2:#0d1424;
+    --line:rgba(47,111,224,.20);
+    --gold:#f0c800;
+    --gold-dim:#c8a400;
+    --red:#c83020;
+    --red-soft:#8b1a10;
+    --blue:#2f6fe0;
+    --blue-deep:#003087;
+    --cream:#e8eefc;
+    --text:#e8eefc;
+    --text-dim:#7d8bab;
+    --ok:#7fe3a3;
+    --warn:#ff6b5b;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 1000px 700px at 20% -5%, rgba(47,111,224,.10), transparent 55%),
+      radial-gradient(ellipse 800px 600px at 90% 15%, rgba(200,48,32,.06), transparent 55%),
+      radial-gradient(ellipse 1200px 800px at 50% 115%, rgba(47,111,224,.09), transparent 55%),
+      #05070d;
+    color:var(--text);
+    font-family:'Barlow', sans-serif;
+    min-height:100vh;
+  }
+  ::selection{background:var(--blue); color:#fff;}
+  h1,h2,h3{font-family:'Barlow Condensed',sans-serif; letter-spacing:.02em;}
+  a{color:var(--cream); text-decoration:none;}
+
+  /* ---- TOPBAR ---- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 22px;
+    background:rgba(3,7,15,.82); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand-group{display:flex; align-items:center; gap:12px;}
+  .logo-spin-wrap{
+    display:inline-block; height:52px; perspective:900px;
+    animation:logo-spin 5s linear infinite;
+  }
+  .brand-logo{
+    height:52px; width:auto; border-radius:10px;
+    box-shadow:0 0 18px rgba(47,111,224,.5);
+    animation:logo-pulse 3.5s ease-in-out infinite;
+    backface-visibility:visible;
+  }
+  @keyframes logo-pulse{
+    0%,100%{box-shadow:0 0 18px rgba(47,111,224,.5);}
+    50%{box-shadow:0 0 30px rgba(47,111,224,.8);}
+  }
+  @keyframes logo-spin{
+    0%{transform:rotateY(0deg);}
+    100%{transform:rotateY(360deg);}
+  }
+  .brand-text .name{font-family:'Archivo Black'; font-size:15px; color:#fff; letter-spacing:.03em;}
+  .brand-text .sub{font-size:10px; color:var(--blue); text-transform:uppercase; letter-spacing:.18em;}
+  .menu-btn{
+    display:none; background:var(--panel2); border:1px solid var(--line); color:#fff;
+    padding:9px 12px; border-radius:8px; cursor:pointer; font-size:18px;
+  }
+
+  /* ---- EN PC: logo y nombre centrados en la barra superior ---- */
+  @media(min-width:921px){
+    .topbar{position:relative;}
+    .brand-group{
+      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    }
+  }
+
+  /* ---- LAYOUT ---- */
+  .layout{display:flex; max-width:1320px; margin:0 auto;}
+  .sidebar{
+    width:272px; flex-shrink:0; padding:24px 14px 60px;
+    position:sticky; top:70px; align-self:flex-start;
+    height:calc(100vh - 70px); overflow-y:auto;
+  }
+  .sidebar::-webkit-scrollbar{width:5px;}
+  .sidebar::-webkit-scrollbar-thumb{background:var(--blue); border-radius:4px;}
+  .nav-label{
+    font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:#fff; padding:0 10px;
+    margin:22px 0 6px; font-weight:700; display:flex; align-items:center; gap:8px;
+  }
+  .nav-label .dot{width:8px; height:8px; border-radius:2px; background:var(--blue); flex-shrink:0;}
+  .nav-label.gold .dot{background:var(--gold);}
+  .nav-label.red .dot{background:var(--red);}
+  .nav-label:first-child{margin-top:0;}
+  .nav-link{
+    display:flex; gap:11px; align-items:center;
+    padding:7px 10px; border-radius:7px; cursor:pointer;
+    color:var(--text-dim); font-size:14px; font-weight:400;
+    background:transparent; border:1px solid transparent;
+    margin-bottom:1px;
+    transition:background .15s, color .15s;
+  }
+  .nav-link .badge{
+    flex-shrink:0; width:20px; height:20px; border-radius:5px;
+    background:transparent; border:none; opacity:.75;
+    display:flex; align-items:center; justify-content:center; font-size:14px;
+  }
+  .nav-link .num{display:none;}
+  .nav-link .lbl{flex:1;}
+  .nav-link .chev{display:none;}
+  .nav-link:hover{background:rgba(255,255,255,.06); color:#fff;}
+  .nav-link.active{background:rgba(47,111,224,.16); color:#fff; font-weight:600;}
+  .nav-link.active .badge{opacity:1;}
+
+
+  main{flex:1; min-width:0; padding:0 24px 80px;}
+
+  @media(min-width:921px){
+    main{padding:8px 32px 90px;}
+  }
+
+  /* ---- UNA SECCIÓN A LA VEZ ---- */
+  .page{display:none;}
+  .page.active{display:block;}
+
+  /* ---- HERO ---- */
+  .hero{
+    position:relative; padding:60px 36px 44px; margin:24px 0 34px;
+    border-radius:22px; overflow:hidden;
+    background:linear-gradient(160deg, #0d1830 0%, #05070d 80%);
+    border:1px solid var(--line);
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background-image:url('skyline.png');
+    background-size:auto 130%; background-repeat:no-repeat; background-position:115% 30%;
+    opacity:.9; pointer-events:none;
+  }
+  .hero-fade{
+    content:""; position:absolute; inset:0; z-index:0;
+    background:linear-gradient(100deg, #05070d 20%, rgba(5,7,13,.75) 45%, rgba(5,7,13,.15) 75%);
+    pointer-events:none;
+  }
+  /* Franja bandera Colombia en el borde superior */
+  .hero::after{
+    content:""; position:absolute; top:0; left:0; right:0; height:5px;
+    background:linear-gradient(90deg, #f0c800 0% 50%, #003087 50% 75%, #c8281e 75% 100%);
+  }
+  .eyebrow{color:var(--blue); text-transform:uppercase; font-size:12.5px; letter-spacing:.26em; font-weight:700; position:relative; z-index:1;}
+  .hero h1{
+    font-family:'Archivo Black'; font-size:clamp(30px,5vw,52px);
+    line-height:1.03; margin:12px 0 14px; color:#fff;
+    text-shadow:0 0 30px rgba(47,111,224,.25);
+    position:relative; z-index:1;
+  }
+  .hero h1 span.gold{color:var(--gold);}
+  .hero h1 span.red{color:var(--red);}
+  .hero h1 span.blue{color:var(--blue);}
+  .hero h1 span.flag{
+    background:linear-gradient(90deg, #f0c800 0%, #f0c800 38%, var(--blue) 55%, var(--red) 78%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .hero p{max-width:540px; color:var(--text-dim); font-size:15.5px; line-height:1.6; position:relative; z-index:1;}
+  .hero-tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; position:relative; z-index:1;}
+  .tag{
+    font-size:12px; padding:6px 14px; border-radius:99px;
+    border:1px solid rgba(47,111,224,.35); color:var(--cream);
+    background:rgba(47,111,224,.1);
+  }
+
+  /* ---- CONNECT ---- */
+  .connect{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px; position:relative; z-index:1;}
+  .connect-card{
+    flex:1 1 240px; background:rgba(6,10,20,.65); border:1px solid rgba(47,111,224,.3);
+    border-radius:14px; padding:16px 18px; backdrop-filter:blur(6px);
+    transition:transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .connect-card:hover{transform:translateY(-3px); border-color:rgba(47,111,224,.55); box-shadow:0 10px 28px rgba(47,111,224,.18);}
+  .connect-label{
+    font-size:11px; text-transform:uppercase; letter-spacing:.16em; color:var(--blue);
+    display:flex; align-items:center; gap:6px; margin-bottom:10px; font-weight:700;
+  }
+  .connect-label .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--ok);
+    box-shadow:0 0 8px var(--ok); animation:blink 2s infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+  .discord-btn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background:linear-gradient(135deg,#2f6fe0,#0d2f74);
+    color:#fff; font-weight:700; font-size:15px;
+    padding:12px 16px; border-radius:10px; width:100%;
+    box-shadow:0 8px 22px rgba(47,111,224,.35);
+    transition:transform .18s, box-shadow .18s;
+  }
+  .discord-btn:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(47,111,224,.5);}
+  .discord-btn svg{width:20px; height:20px;}
+  .verify-pill{
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(127,227,163,.1); border:1px solid rgba(127,227,163,.3);
+    color:var(--ok); font-size:12px; font-weight:600;
+    padding:5px 11px; border-radius:99px; margin-top:10px;
+  }
+  .verify-pill svg{width:13px; height:13px;}
+  .ip-row{display:flex; align-items:center; gap:10px;}
+  .ip-code{
+    flex:1; font-family:'Barlow Condensed'; font-size:14px; color:#fff;
+    background:rgba(47,111,224,.1); border:1px solid rgba(47,111,224,.3);
+    padding:9px 12px; border-radius:8px; white-space:nowrap; overflow-x:auto;
+  }
+  .copy-btn{
+    flex-shrink:0; background:var(--blue); color:#fff; border:none;
+    width:38px; height:38px; border-radius:8px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:15px;
+    transition:transform .15s, background .15s; font-weight:700;
+  }
+  .copy-btn:hover{background:#4f8bff; transform:scale(1.07);}
+  .copy-btn.copied{background:var(--ok); color:#06210f;}
+  .prox{
+    font-family:'Barlow Condensed'; font-size:15px; color:var(--blue);
+    letter-spacing:.08em; font-weight:700; margin-top:8px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .prox::before{content:"⏳";}
+
+  /* ---- DISCORD BADGE (photo overlay) ---- */
+  .hero-badge{
+    position:absolute; right:34px; bottom:26px; z-index:1;
+    width:104px; height:104px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #1a4fb0, #041025 78%);
+    border:2px solid rgba(79,139,255,.55);
+    box-shadow:0 0 0 6px rgba(47,111,224,.12), 0 0 32px rgba(47,111,224,.55);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    animation:badge-pulse 3.2s ease-in-out infinite;
+  }
+  .hero-badge svg{width:30px; height:30px; color:#fff;}
+  .hero-badge span{font-size:10.5px; font-weight:700; letter-spacing:.12em; color:#dce8ff;}
+  @keyframes badge-pulse{
+    0%,100%{box-shadow:0 0 0 6px rgba(47,111,224,.12), 0 0 32px rgba(47,111,224,.55);}
+    50%{box-shadow:0 0 0 10px rgba(47,111,224,.18), 0 0 46px rgba(47,111,224,.8);}
+  }
+  @media(max-width:640px){ .hero-badge{display:none;} }
+
+  /* ---- ARTICLES ---- */
+  .article{
+    background:linear-gradient(165deg, var(--panel), var(--panel2));
+    border:1px solid var(--line); border-radius:18px;
+    padding:28px 30px; margin-bottom:22px; scroll-margin-top:88px;
+    position:relative; overflow:hidden;
+    opacity:0; transform:translateY(20px);
+    box-shadow:0 14px 34px rgba(0,0,0,.28);
+    transition:opacity .55s ease, transform .55s ease;
+  }
+  .article::before{
+    content:""; position:absolute; top:0; left:0; width:4px; height:100%;
+    background:linear-gradient(180deg, var(--blue), var(--red));
+  }
+  .article.in{opacity:1; transform:translateY(0);}
+  .article-head{display:flex; align-items:baseline; gap:12px; margin-bottom:8px;}
+  .art-num{
+    font-family:'Archivo Black'; color:var(--blue); font-size:13px;
+    background:rgba(47,111,224,.12); border:1px solid rgba(47,111,224,.32);
+    padding:3px 10px; border-radius:7px; flex-shrink:0;
+  }
+  .article h2{font-size:22px; margin:0; color:#fff; font-weight:700;}
+  .article h3.sub{
+    font-family:'Barlow Condensed'; color:#6f9be8; font-size:14.5px;
+    text-transform:uppercase; letter-spacing:.08em; margin:22px 0 9px; font-weight:700;
+    border-bottom:1px solid var(--line); padding-bottom:6px;
+  }
+  .article p,.article li{font-size:14.5px; line-height:1.65; color:var(--text);}
+  .article ul,.article ol{padding-left:20px; margin:10px 0;}
+  .article li{margin-bottom:7px;}
+  .article li::marker{color:var(--blue);}
+  .article-img{width:100%; max-width:100%; height:auto; border-radius:12px; margin:14px 0; border:1px solid var(--line); display:block;}
+
+  .callout{
+    border-left:3px solid var(--blue);
+    background:rgba(47,111,224,.1);
+    padding:12px 16px; border-radius:0 10px 10px 0; margin:14px 0;
+    font-size:14px; color:var(--cream);
+  }
+  .warn{
+    border-left:3px solid var(--red);
+    background:rgba(200,48,32,.08);
+    padding:12px 16px; border-radius:0 10px 10px 0; margin:14px 0;
+    font-size:14px; color:#ffc6c2;
+  }
+  .req-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; margin:14px 0;}
+  .req-pill{background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:12px 14px;}
+  .req-pill .v{font-family:'Archivo Black'; color:var(--blue); font-size:20px; display:block;}
+  .req-pill .l{font-size:11.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.05em;}
+  .example{
+    font-style:italic; color:var(--text-dim); font-size:13.5px;
+    background:rgba(255,255,255,.02); border:1px dashed var(--line);
+    padding:10px 14px; border-radius:10px; margin:12px 0;
+  }
+  .sanctions{width:100%; border-collapse:collapse; margin-top:8px; font-size:14px;}
+  .sanctions th{
+    text-align:left; padding:10px 14px; color:var(--blue);
+    font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:.06em; font-size:12px;
+    border-bottom:1px solid var(--line);
+  }
+  .sanctions td{padding:10px 14px; border-bottom:1px solid rgba(47,111,224,.1); color:var(--text);}
+  .sanctions tr:hover td{background:rgba(47,111,224,.05);}
+  .sanctions .time{color:var(--cream); font-weight:600; white-space:nowrap;}
+  .sanctions .perm{color:var(--warn); font-weight:700;}
+
+  /* ---- CONTENT TOPBAR (breadcrumb + copiar, estilo GitBook) ---- */
+  .content-topbar{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:18px 0 14px; margin-top:18px;
+    border-bottom:1px solid var(--line);
+  }
+  .breadcrumb{
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; color:var(--blue); font-weight:600;
+  }
+  .breadcrumb .sq{width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0;}
+  .copy-page-btn{
+    display:flex; align-items:center; gap:7px; cursor:pointer;
+    background:var(--panel2); border:1px solid var(--line); color:var(--text);
+    padding:7px 13px; border-radius:9px; font-size:12.5px; font-weight:600;
+    transition:border-color .15s, color .15s;
+  }
+  .copy-page-btn:hover{border-color:var(--blue); color:#fff;}
+  .copy-page-btn.copied{border-color:var(--ok); color:var(--ok);}
+  .copy-page-btn .caret{font-size:10px; opacity:.7; margin-left:2px;}
+  .content-actions{position:relative;}
+  .actions-menu{
+    display:none; position:absolute; right:0; top:calc(100% + 8px); z-index:40;
+    width:270px; background:var(--panel2); border:1px solid var(--line); border-radius:13px;
+    padding:8px; box-shadow:0 16px 40px rgba(0,0,0,.5);
+  }
+  .actions-menu.open{display:block;}
+  .am-item{
+    display:flex; align-items:flex-start; gap:11px; padding:9px 10px; border-radius:9px;
+    cursor:pointer; color:var(--text); transition:background .15s;
+  }
+  .am-item:hover{background:rgba(47,111,224,.12);}
+  .am-ic{flex-shrink:0; font-size:16px; width:20px; text-align:center; margin-top:1px; display:flex; align-items:center; justify-content:center;}
+  .am-title{font-size:13.5px; font-weight:600; color:#fff;}
+  .am-sub{font-size:11.5px; color:var(--text-dim); margin-top:1px;}
+  .am-divider{height:1px; background:var(--line); margin:6px 4px;}
+
+  /* ---- PAGE NAV (anterior / siguiente, estilo GitBook) ---- */
+  .pagenav{display:flex; gap:14px; margin:34px 0 10px; flex-wrap:wrap;}
+  .pagenav-card{
+    flex:1 1 220px; padding:14px 16px; border-radius:12px;
+    background:var(--panel2); border:1px solid var(--line); cursor:pointer;
+    transition:border-color .15s, transform .15s;
+  }
+  .pagenav-card:hover{border-color:var(--blue); transform:translateY(-2px);}
+  .pagenav-card.next{text-align:right; margin-left:auto;}
+  .pagenav-card .pn-dir{font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.1em; margin-bottom:4px;}
+  .pagenav-card .pn-title{font-size:14.5px; color:#fff; font-weight:600;}
+  .pagenav-card.empty{visibility:hidden; pointer-events:none;}
+  .floating-discord{
+    position:fixed; bottom:22px; right:22px; z-index:70;
+    display:flex; align-items:center; gap:9px;
+    background:linear-gradient(135deg,#2f6fe0,#0d2f74);
+    color:#fff; font-weight:700; font-size:13.5px;
+    padding:13px 18px; border-radius:50px;
+    box-shadow:0 10px 28px rgba(47,111,224,.45);
+    border:1px solid rgba(255,255,255,.12);
+    transition:transform .2s, box-shadow .2s;
+    animation:float-pulse 3s ease-in-out infinite;
+  }
+  .floating-discord:hover{transform:scale(1.06);}
+  .floating-discord svg{width:19px; height:19px;}
+  @keyframes float-pulse{
+    0%,100%{box-shadow:0 10px 28px rgba(47,111,224,.45);}
+    50%{box-shadow:0 10px 38px rgba(47,111,224,.7);}
+  }
+
+  footer{
+    text-align:center; padding:36px 20px 56px;
+    color:var(--text-dim); font-size:13px;
+    border-top:1px solid var(--line); margin-top:20px;
+  }
+  footer img{height:32px; margin-bottom:10px; opacity:.8;}
+
+  /* ---- SPLASH ---- */
+  #splash{
+    position:fixed; inset:0; z-index:200;
+    background:linear-gradient(160deg, #050d1c 0%, #030812 55%, #02050c 100%);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  #splash.hide{opacity:0; visibility:hidden; pointer-events:none;}
+  .splash-photo{
+    position:absolute; inset:0; z-index:0;
+    background-image:url('skyline.png');
+    background-size:cover; background-position:50% 35%; background-repeat:no-repeat;
+    opacity:.85;
+  }
+  .splash-photo::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(3,8,18,.55) 0%, rgba(3,8,18,.35) 45%, rgba(3,8,18,.92) 100%);
+  }
+  .splash-map{
+    position:absolute; inset:0; z-index:1; opacity:.16; pointer-events:none;
+    background-image:
+      repeating-linear-gradient(100deg, rgba(79,139,255,.5) 0 1px, transparent 1px 90px),
+      repeating-linear-gradient(10deg, rgba(79,139,255,.5) 0 1px, transparent 1px 130px);
+  }
+
+  /* ---- ONDAS DE LUZ EXPANDIÉNDOSE ---- */
+  .splash-waves{
+    position:absolute; left:50%; top:50%; width:0; height:0; z-index:1; pointer-events:none;
+  }
+  .wave{
+    position:absolute; left:0; top:0; width:40px; height:40px; margin:-20px 0 0 -20px;
+    border-radius:50%; border:2px solid currentColor;
+    box-shadow:0 0 16px currentColor, inset 0 0 16px currentColor;
+    opacity:0;
+    animation:wave-expand 3.6s ease-out infinite;
+  }
+  .wave-gold{color:#f0c800;}
+  .wave-blue{color:#5fa2ff;}
+  .wave-red{color:#ff6b56;}
+  .wave:nth-child(1){animation-delay:0s;}
+  .wave:nth-child(2){animation-delay:.9s;}
+  .wave:nth-child(3){animation-delay:1.8s;}
+  .wave:nth-child(4){animation-delay:2.7s;}
+  .wave:nth-child(5){animation-delay:1.35s;}
+  @keyframes wave-expand{
+    0%{ width:40px; height:40px; margin:-20px 0 0 -20px; opacity:.6; }
+    65%{ opacity:.18; }
+    100%{ width:560px; height:560px; margin:-280px 0 0 -280px; opacity:0; }
+  }
+  .splash-glow{
+    position:absolute; z-index:1; pointer-events:none;
+    width:520px; height:520px; border-radius:50%; left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(47,111,224,.35) 0%, rgba(240,200,0,.12) 45%, transparent 72%);
+    filter:blur(10px);
+    animation:glow-pulse 3.6s ease-in-out infinite;
+  }
+  @keyframes glow-pulse{
+    0%,100%{opacity:.7; transform:translate(-50%,-50%) scale(1);}
+    50%{opacity:1; transform:translate(-50%,-50%) scale(1.08);}
+  }
+
+  .splash-core{
+    position:relative; z-index:3;
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    padding:0 24px;
+  }
+  .splash-logo-wrap{
+    display:inline-block; width:230px; perspective:1000px;
+    opacity:0; transform:translateY(18px) scale(.88);
+    animation:logo-rise 1s .3s cubic-bezier(.22,1,.36,1) forwards,
+              logo-spin 5s linear 1.3s infinite;
+  }
+  .splash-logo{
+    width:230px; height:auto; display:block;
+    filter:drop-shadow(0 8px 32px rgba(47,111,224,.45)) drop-shadow(0 0 60px rgba(240,200,0,.25));
+  }
+  @keyframes logo-rise{
+    0%{opacity:0; transform:translateY(18px) scale(.88);}
+    100%{opacity:1; transform:translateY(0) scale(1);}
+  }
+  .splash-lockup{
+    margin-top:14px; opacity:0;
+    animation:fade-up-in .65s .7s ease forwards;
+  }
+  .splash-lockup .l1{font-family:'Barlow Condensed'; font-weight:600; color:#fff; font-size:22px; letter-spacing:.03em;}
+  .splash-lockup .l2{
+    font-family:'Archivo Black'; font-size:42px; letter-spacing:.02em; line-height:1.1; margin:2px 0;
+    background:linear-gradient(90deg,#f0c800 0%,#f0c800 32%,#2f6fe0 55%,#c8281e 82%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .splash-lockup .l3{font-family:'Barlow Condensed'; font-weight:600; color:#fff; font-size:20px; letter-spacing:.06em;}
+  .splash-divider{
+    width:min(320px,80vw); height:2px; margin:22px auto 18px; opacity:0;
+    background:linear-gradient(90deg,#f0c800,#2f6fe0,#c8281e);
+    animation:fade-up-in .6s .95s ease forwards;
+  }
+  .splash-text{
+    opacity:0;
+    font-family:'Archivo Black'; font-size:clamp(22px,6vw,32px); letter-spacing:.04em;
+    animation:fade-up-in .65s 1.1s ease forwards;
+  }
+  .splash-text .w1{color:#f0c800;}
+  .splash-text .w2{color:#2f6fe0;}
+  .splash-text .w3{color:#c8281e;}
+  .splash-sub{
+    margin-top:9px; opacity:0;
+    font-family:'Barlow Condensed'; color:#9fb3d6; font-size:12px;
+    text-transform:uppercase; letter-spacing:.28em;
+    animation:fade-up-in .65s 1.25s ease forwards;
+  }
+  .splash-skip{
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    font-size:11.5px; color:rgba(159,179,214,.7); letter-spacing:.12em;
+    text-transform:uppercase; animation:fade-up-in .5s 1.5s ease forwards; opacity:0;
+    display:flex; flex-direction:column; align-items:center; gap:6px; z-index:3;
+  }
+  .splash-skip .chev{font-size:16px; color:var(--blue); animation:chev-bounce 1.6s ease-in-out infinite;}
+  @keyframes chev-bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+  @keyframes fade-up-in{0%{opacity:0;transform:translateY(8px);}100%{opacity:1;transform:translateY(0);}}
+  body.loading{overflow:hidden;}
+
+
+  @media(max-width:920px){
+    .menu-btn{display:block;}
+    .sidebar{
+      position:fixed;top:70px;left:0;height:calc(100vh - 70px);
+      width:78%;max-width:290px;background:#05070d;z-index:60;
+      transform:translateX(-105%);transition:transform .25s ease;
+      border-right:1px solid var(--line);
+    }
+    .sidebar.open{transform:translateX(0);box-shadow:20px 0 60px rgba(0,0,0,.6);}
+    .overlay{display:none;position:fixed;inset:70px 0 0 0;background:rgba(0,0,0,.55);z-index:55;}
+    .overlay.show{display:block;}
+    main{padding:0 14px 60px;}
+    .hero{padding:38px 20px 30px;}
+    .article{padding:20px 18px 24px;}
+    .floating-discord span{display:none;}
+    .floating-discord{padding:14px;border-radius:50%;}
+  }
+</style>
+</head>
+<body class="loading">
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-photo"></div>
+  <div class="splash-map"></div>
+  <div class="splash-waves">
+    <span class="wave wave-gold"></span>
+    <span class="wave wave-blue"></span>
+    <span class="wave wave-red"></span>
+    <span class="wave wave-gold"></span>
+    <span class="wave wave-blue"></span>
+  </div>
+  <div class="splash-core">
+    <div class="splash-glow"></div>
+    <div class="splash-logo-wrap"><img src="logo.png" class="splash-logo" alt="PCR — Proyecto Colombia Roleplay"></div>
+    <div class="splash-divider"></div>
+    <div class="splash-text"><span class="w1">PROYECTO</span> <span class="w2">COLOMBIA</span> <span class="w3">V1</span></div>
+    <div class="splash-sub">Roleplay</div>
+  </div>
+  <div class="splash-skip">Toca para continuar<span class="chev">⌄</span></div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="brand-group">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="logo-spin-wrap" id="brandLogo" style="cursor:pointer;"><img src="logo-header.png" class="brand-logo" alt="Proyecto Colombia Roleplay"></div>
+    <div class="brand-text">
+      <span class="name">PROYECTO COLOMBIA V1</span>
+      <span class="sub">Normativa Oficial · Roleplay</span>
+    </div>
+  </div>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-label"><span class="dot"></span>Inicio</div>
+    <div class="nav-link active" data-target="home"><span class="badge">🏠</span><span class="num">00</span><span class="lbl">Bienvenida</span><span class="chev">›</span></div>
+    <div class="nav-label"><span class="dot"></span>Normativa</div>
+    <div class="nav-link" data-target="art1"><span class="badge">🥷</span><span class="num">01</span><span class="lbl">Robos a jugadores</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art2"><span class="badge">🚔</span><span class="num">02</span><span class="lbl">Secuestros</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art3"><span class="badge">🏦</span><span class="num">03</span><span class="lbl">Robo a tiendas y bancos</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art4"><span class="badge">💬</span><span class="num">04</span><span class="lbl">Discord</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art5"><span class="badge">👤</span><span class="num">05</span><span class="lbl">Ghosting</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art6"><span class="badge">🚗</span><span class="num">06</span><span class="lbl">Vehículos estatales</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art7"><span class="badge">💔</span><span class="num">07</span><span class="lbl">Muerte en el rol</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art8"><span class="badge">🛡️</span><span class="num">08</span><span class="lbl">Muerte a manos de PD/EJC</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art9"><span class="badge">🚙</span><span class="num">09</span><span class="lbl">Vehículos</span><span class="chev">›</span></div>
+    <div class="nav-label gold"><span class="dot"></span>Facciones</div>
+    <div class="nav-link" data-target="art10"><span class="badge">👥</span><span class="num">10</span><span class="lbl">Facciones generales</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art11"><span class="badge">⭐</span><span class="num">11</span><span class="lbl">Roles sensibles</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art12"><span class="badge">📜</span><span class="num">12</span><span class="lbl">Roles, CK y PKT</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art13"><span class="badge">🗺️</span><span class="num">13</span><span class="lbl">Guía de zonas</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art14"><span class="badge">❓</span><span class="num">14</span><span class="lbl">Dudas / Report</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art15"><span class="badge">🕶️</span><span class="num">15</span><span class="lbl">Facciones ilegales</span><span class="chev">›</span></div>
+    <div class="nav-link" data-target="art16"><span class="badge">🏠</span><span class="num">16</span><span class="lbl">Entornos y bases</span><span class="chev">›</span></div>
+    <div class="nav-label red"><span class="dot"></span>Sanciones</div>
+    <div class="nav-link" data-target="art17"><span class="badge">⏱️</span><span class="num">17</span><span class="lbl">Tiempos de baneo</span><span class="chev">›</span></div>
+  </nav>
+
+  <main>
+    <div class="content-topbar" id="contentTopbar">
+      <div class="breadcrumb"><span class="sq" id="breadcrumbDot"></span><span id="breadcrumbText">Inicio</span></div>
+      <div class="content-actions" id="contentActions">
+        <button class="copy-page-btn" id="copyPageBtn">📋 <span>Copiar</span><span class="caret">⌄</span></button>
+        <div class="actions-menu" id="actionsMenu">
+          <div class="am-item" id="amCopyLink">
+            <span class="am-ic">🔗</span>
+            <div><div class="am-title">Copiar enlace</div><div class="am-sub">Copiar el link directo a esta sección</div></div>
+          </div>
+          <div class="am-divider"></div>
+          <a class="am-item" id="amChatgpt" target="_blank" rel="noopener">
+            <span class="am-ic">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="#fff"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9 6.0651 6.0651 0 0 0-11.5033.1057A5.9847 5.9847 0 0 0 .9834 5.9979a6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654 2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>
+            </span>
+            <div><div class="am-title">Abrir en ChatGPT</div><div class="am-sub">Preguntar a ChatGPT sobre esta página</div></div>
+          </a>
+          <a class="am-item" id="amClaude" target="_blank" rel="noopener">
+            <span class="am-ic">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="#D97757">
+                <g>
+                  <path d="M12 12 C11.1 8.7 10.7 5.8 12 1.2 C13.3 5.8 12.9 8.7 12 12 Z"/>
+                  <path d="M12 12 C11.1 8.7 10.7 5.8 12 1.2 C13.3 5.8 12.9 8.7 12 12 Z" transform="rotate(45 12 12)"/>
+                  <path d="M12 12 C11.1 8.7 10.7 5.8 12 1.2 C13.3 5.8 12.9 8.7 12 12 Z" transform="rotate(90 12 12)"/>
+                  <path d="M12 12 C11.1 8.7 10.7 5.8 12 1.2 C13.3 5.8 12.9 8.7 12 12 Z" transform="rotate(135 12 12)"/>
+                  <path d="M12 12 C11.1 8.7 10.7 5.8 12 1.2 C13.3 5.8 12.9 8.7 12 12 Z" transform="rotate(180 12 12)"/>
+                  <path d="M12 12 C11.1 8.7 10.7 5.8 12 1.2 C13.3 5.8 12.9 8.7 12 12 Z" transform="rotate(225 12 12)"/>
+                  <path d="M12 12 C11.1 8.7 10.7 5.8 12 1.2 C13.3 5.8 12.9 8.7 12 12 Z" transform="rotate(270 12 12)"/>
+                  <path d="M12 12 C11.1 8.7 10.7 5.8 12 1.2 C13.3 5.8 12.9 8.7 12 12 Z" transform="rotate(315 12 12)"/>
+                </g>
+              </svg>
+            </span>
+            <div><div class="am-title">Abrir en Claude</div><div class="am-sub">Preguntar a Claude sobre esta página</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <section class="hero page active" id="home">
+      <div class="hero-fade"></div>
+      <span class="eyebrow">Proyecto Colombia V1 · Roleplay</span>
+      <h1><span style="color:#fff;">Proyecto</span> <span class="blue">Colombia</span> V1<br>Roleplay</h1>
+      <p>Las reglas que sostienen la ciudad. Léelas, entiéndelas y vívelas dentro del rol — son la diferencia entre una historia creíble y un servidor en caos.</p>
+      <div class="hero-tags">
+        <span class="tag">17 artículos</span>
+        <span class="tag">Facciones legales e ilegales</span>
+        <span class="tag">Sanciones oficiales</span>
+      </div>
+      <a href="https://discord.gg/mta-proyecto-colombia-origenes-521706171300577283" target="_blank" rel="noopener" class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127c-.598.35-1.22.645-1.873.893a.076.076 0 0 0-.04.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.001-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        <span>DISCORD</span>
+      </a>
+      <div class="connect">
+        <div class="connect-card">
+          <div class="connect-label"><span class="dot"></span> Discord oficial</div>
+          <a href="https://discord.gg/mta-proyecto-colombia-origenes-521706171300577283" target="_blank" rel="noopener" class="discord-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127c-.598.35-1.22.645-1.873.893a.076.076 0 0 0-.04.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.001-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            Unirme al Discord
+          </a>
+          <div class="verify-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Servidor verificado
+          </div>
+        </div>
+        <div class="connect-card">
+          <div class="connect-label"><span class="dot"></span> IP del servidor</div>
+          <div class="ip-row">
+            <code class="ip-code" id="ipCode">Próximamente</code>
+            <button class="copy-btn" id="copyBtn" title="Copiar IP">📋</button>
+          </div>
+          <p class="prox">Lanzamiento próximo — ¡estate atento!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ART 1 -->
+    <article class="article page" id="art1">
+      <div class="article-head"><span class="art-num">ART. 1</span><h2>Robos a otros jugadores</h2></div>
+      <ul>
+        <li>No podrás robar a usuarios que no cumplan un mínimo de <strong>1 hora jugada</strong>. Debes pedirle a un staff que verifique esta información; de no hacerlo se considera <strong>NA (Noob Abuser)</strong>.</li>
+        <li>No se puede robar utilizando armas largas (AK-47) ni vehículos deportivos (Super GT, Turismo, Infernus). El uso de estos se sanciona como <strong>NIP</strong>.</li>
+        <li>El AK-47 es exclusivo para tiroteos contra PD/EJC, guerras entre mafias/bandas (solicitadas por ticket en Discord) y para uso en los pueblos, junto al M4.</li>
+        <li>Una vez el asaltado levanta las manos con <strong>/9</strong>, no puede cancelar la acción para sacar un arma. Si lo hace se sanciona por <strong>RSL y NVVPJ</strong> y pierde los objetos del robo.</li>
+      </ul>
+      <h3 class="sub">Llamado de entorno obligatorio</h3>
+      <p>Al finalizar el acto ilícito, los responsables deben narrar lo ocurrido con <strong>/entorno</strong>.</p>
+      <div class="example">/entorno estoy viendo a 2 tipos armados, se bajaron de una Sánchez roja con matrícula tapada y le están robando a un joven en un callejón de mi barrio. Van vestidos de negro con el rostro oculto, se dirigen hacia el norte.</div>
+    </article>
+
+    <!-- ART 2 -->
+    <article class="article page" id="art2">
+      <div class="article-head"><span class="art-num">ART. 2</span><h2>Secuestros</h2></div>
+      <ul>
+        <li>No se puede secuestrar a un líder de facción legal (PD/EMS) sin ticket aprobado — <strong>máximo 3 veces al mes</strong>.</li>
+        <li>No se puede robar más del <strong>50%</strong> del dinero del secuestrado. Sus pertenencias (comida, cargadores, armas no estatales, celular) sí se pueden quitar al 100%.</li>
+      </ul>
+      <h3 class="sub">Requisitos mínimos</h3>
+      <div class="req-grid">
+        <div class="req-pill"><span class="v">5 PD</span><span class="l">en servicio para secuestrar civiles</span></div>
+        <div class="req-pill"><span class="v">7 PD</span><span class="l">en servicio + ticket para secuestrar policía</span></div>
+        <div class="req-pill"><span class="v">2 / día</span><span class="l">máximo de secuestros (más requiere ticket)</span></div>
+      </div>
+      <ul>
+        <li>Si la policía llega y se cumple un acuerdo, el secuestrado debe ser liberado.</li>
+        <li>No se permite campear ni secuestrar a alguien justo afuera de su HQ.</li>
+        <li>No se necesita staff en Spec salvo para roles por ticket (CK2, heridas graves, etc.).</li>
+      </ul>
+      <h3 class="sub">Entornos obligatorios (2)</h3>
+      <p><strong>1° al iniciar:</strong> vehículo, vestimenta, cantidad de personas, rehenes, lugar y <strong>/avisarpd</strong>.</p>
+      <p><strong>2° al escapar:</strong> color del vehículo, cantidad de secuestrados, secuestradores y zona destino.</p>
+      <div class="example">/entorno se vería un Huntley color naranja con 3 personas armadas salir de la zona de Cali luego de secuestrar a 2 civiles, dirigiéndose al bosque de Medellín.</div>
+    </article>
+
+    <!-- ART 3 -->
+    <article class="article page" id="art3">
+      <div class="article-head"><span class="art-num">ART. 3</span><h2>Robos a tiendas y bancos</h2></div>
+      <p>El entorno debe realizarlo quien comete el robo. Para robar una tienda, usar <strong>H</strong> o <strong>P</strong> en el marker. Si la policía llega, la negociación es obligatoria.</p>
+      <div class="callout">Para robar bancos se requiere ser miembro de una <strong>Mafia Oficial</strong> con rol previamente aprobado por ticket.</div>
+      <h3 class="sub">Tiendas</h3>
+      <div class="req-grid">
+        <div class="req-pill"><span class="v">2–4</span><span class="l">asaltantes (mín–máx)</span></div>
+        <div class="req-pill"><span class="v">3–5</span><span class="l">oficiales requeridos</span></div>
+        <div class="req-pill"><span class="v">5 min</span><span class="l">espera si no llega policía</span></div>
+        <div class="req-pill"><span class="v">$20M</span><span class="l">máximo botín</span></div>
+      </div>
+      <h3 class="sub">Bancos</h3>
+      <div class="req-grid">
+        <div class="req-pill"><span class="v">4–11</span><span class="l">asaltantes (mín–máx)</span></div>
+        <div class="req-pill"><span class="v">6–20</span><span class="l">oficiales requeridos</span></div>
+        <div class="req-pill"><span class="v">10 min</span><span class="l">espera si no llega policía</span></div>
+        <div class="req-pill"><span class="v">$100M</span><span class="l">máximo botín</span></div>
+      </div>
+      <ul>
+        <li>1 rehén real por cada 3 oficiales; mínimo 3 rehenes para iniciar. Máximo 2 NPC por banco.</li>
+        <li>Cartel/Mafia: 1 banco cada 7 días.</li>
+        <li>Obligatorio Staff en Spec, asignado por Ayudante de Facciones Ilegales con rol ya aceptado.</li>
+      </ul>
+    </article>
+
+    <!-- ART 4 -->
+    <article class="article page" id="art4">
+      <div class="article-head"><span class="art-num">ART. 4</span><h2>Discord</h2></div>
+      <p>El Discord oficial es espacio OOC. Toda información IC obtenida de allí es inválida dentro del rol y se sanciona como <strong>MG (Metagaming)</strong>.</p>
+      <div class="callout">Excepción: canales <strong>#AnunciosIC</strong>, <strong>#MercadoLibre</strong>, <strong>#Facebook</strong> y <strong>#Twitter</strong> sí permiten uso IC.</div>
+    </article>
+
+    <!-- ART 5 -->
+    <article class="article page" id="art5">
+      <div class="article-head"><span class="art-num">ART. 5</span><h2>Ghosting</h2></div>
+      <p>Muerto, no puedes brindar ningún tipo de información OOC o IC. Si perteneces a Mafia, Banda, Policía o Ejército, al morir debes ensordecer tu radio por completo.</p>
+      <div class="warn">Incumplir esta norma se sanciona como <strong>MG</strong>.</div>
+    </article>
+
+    <!-- ART 6 -->
+    <article class="article page" id="art6">
+      <div class="article-head"><span class="art-num">ART. 6</span><h2>Uso de vehículos estatales</h2></div>
+      <p>Prohibido usar vehículos de facciones públicas (Pizzero, Taxista, Limpieza, Médico, Butanero, Mecánico, Policía) sin pertenecer a ellas. Los vehículos de trabajo solo pueden usarse para trabajar. No hay justificación que valga.</p>
+    </article>
+
+    <!-- ART 7 -->
+    <article class="article page" id="art7">
+      <div class="article-head"><span class="art-num">ART. 7</span><h2>Muerte en el rol</h2></div>
+      <ul>
+        <li>Estrictamente prohibido robar vehículos faccionarios tras morir en un rol.</li>
+        <li>Prohibido reintegrarse al mismo rol tras revivir.</li>
+      </ul>
+      <div class="warn">Si alguien revive a mitad de rol y se reintegra, se sanciona tanto al EMS como a quien se reintegró.</div>
+    </article>
+
+    <!-- ART 8 -->
+    <article class="article page" id="art8">
+      <div class="article-head"><span class="art-num">ART. 8</span><h2>Muerte a manos de Policía / EJC</h2></div>
+      <ol>
+        <li>Rolear las heridas con un médico o en el hospital y al ser curado entregarse a la policía/EJC.</li>
+        <li>Rolear que no resiste las heridas y fallece — implica un <strong>CK2 Policial</strong>.</li>
+      </ol>
+    </article>
+
+    <!-- ART 9 -->
+    <article class="article page" id="art9">
+      <div class="article-head"><span class="art-num">ART. 9</span><h2>Vehículos</h2></div>
+      <ul>
+        <li>Capacidad física real asignada — sin justificar exceso de pasajeros "en el maletero", salvo camionetas (Huntley, Bobcat, Walton, etc.).</li>
+        <li>Prohibido usar autos deportivos trabajando de Limpieza o Pizzero.</li>
+        <li>Vehículos defectuosos deben dejarse a un lado de la calle, no en medio. El staff puede eliminarlos.</li>
+        <li>Prohibido estacionar helicópteros dentro de la ciudad.</li>
+        <li>No disparar desde el vehículo siendo conductor ni a matar desde él — solo a ruedas y chasis.</li>
+        <li>Con llantas pinchadas: máximo <strong>60 km/h</strong> (usar <strong>/limitador 60</strong>). Con dos o más pinchadas se sanciona como <strong>PG</strong>.</li>
+      </ul>
+      <h3 class="sub">Límite de maletero</h3>
+      <div class="req-grid">
+        <div class="req-pill"><span class="v">50/20</span><span class="l">cargadores/armas — Camionetas</span></div>
+        <div class="req-pill"><span class="v">30/15</span><span class="l">cargadores/armas — Autos</span></div>
+        <div class="req-pill"><span class="v">10/5</span><span class="l">cargadores/armas — Motos</span></div>
+      </div>
+    </article>
+
+    <!-- ART 10 -->
+    <article class="article page" id="art10">
+      <div class="article-head"><span class="art-num">ART. 10</span><h2>Facciones</h2></div>
+      <h3 class="sub">Empleos externos</h3>
+      <p>Ningún miembro de facción pública (Policía, EMS, Ejército) puede ejercer en un trabajo privado — se sanciona como <strong>NIP</strong>.</p>
+      <h3 class="sub">10.2 — Policía Nacional</h3>
+      <p>Corrupción permitida desde rango <strong>Teniente</strong> con ticket aprobado. No permitido: venta de armas o cargadores del cuerpo policial. Prohibido usar uniforme fuera de servicio.</p>
+      <h3 class="sub">10.3 — Ejército Nacional</h3>
+      <p><strong>Hydra:</strong> operaciones especiales, defensa de soberanía y reconocimiento aéreo (1 de ataque, 2 de reconocimiento).</p>
+      <p><strong>Hunter:</strong> operaciones especiales, secuestros y ataques a bases. En secuestros solo la ametralladora.</p>
+      <h3 class="sub">10.4 — Departamento de Médicos</h3>
+      <ul>
+        <li>Asistencia obligatoria a todos, priorizando PD, Ejército y Mecánico. Pueden cobrar el servicio.</li>
+        <li>Nunca se puede matar, robar o secuestrar a un SURA en servicio.</li>
+        <li>Fuera de servicio es civil normal — no puede realizar actividades ilícitas (NIP).</li>
+      </ul>
+      <h3 class="sub">10.5 — Mecánicos</h3>
+      <ul>
+        <li>No se les puede robar o secuestrar en servicio.</li>
+        <li>No puede hacerse full tuning a su propio auto.</li>
+        <li>Nunca se puede matar a un mecánico en servicio.</li>
+      </ul>
+    </article>
+
+    <!-- ART 11 -->
+    <article class="article page" id="art11">
+      <div class="article-head"><span class="art-num">ART. 11</span><h2>Roles sensibles</h2></div>
+      <p>Cualquier rol que incluya actos sexuales sin consentimiento de todos los participantes es un "rol sensible". Cualquier implicado puede cancelarlo por <strong>/b</strong> sin recibir sanción.</p>
+      <div class="warn">
+        Incumplir: baneo sin apelación para todos los involucrados.<br>
+        <strong>Hombres — 144 h (6 días) &nbsp;|&nbsp; Mujeres — 240 h (10 días)</strong>
+      </div>
+    </article>
+
+    <!-- ART 12 -->
+    <article class="article page" id="art12">
+      <div class="article-head"><span class="art-num">ART. 12</span><h2>Roles, CK y PKT</h2></div>
+      <ul>
+        <li>Prohibido tiroteos frente al Ayuntamiento sin ticket aprobado.</li>
+        <li>Prohibido ingresar a la Base Militar — zona restringida. Sanción por <strong>NRE y NVVPJ</strong>.</li>
+      </ul>
+      <h3 class="sub">CK2</h3>
+      <ul>
+        <li><strong>Propio:</strong> solicitar vía foro.</li>
+        <li><strong>A terceros:</strong> solo líderes de mafia/banda oficial o líder de Policía con motivos válidos.</li>
+        <li><strong>Administrativo:</strong> lo decide la admin, no requiere aceptación del usuario.</li>
+      </ul>
+      <h3 class="sub">PKT</h3>
+      <p>Requiere mínimo 3–4 roles previos con esa persona, motivos suficientes, pruebas fotográficas y un Staff presente.</p>
+      <div class="warn">Abusar de bugs del servidor: 2 días sin apelación. Notificar siempre un bug encontrado.</div>
+    </article>
+
+    <!-- ART 13 -->
+    <article class="article page" id="art13">
+      <div class="article-head"><span class="art-num">ART. 13</span><h2>Guía de zonas</h2></div>
+      <h3 class="sub">13.1 — Zonas seguras</h3>
+      <p>No se permiten roles agresivos en un radio de 2 cuadras alrededor de: Comisaría / Base Militar, Hospital, Mecánicos, Pizzería, Ayuntamiento, Concesionario, Oficinas de Tránsito, Sede de Licencias y zonas de trabajo. Excepción: <strong>rol previo</strong> (persecución iniciada antes de llegar).</p>
+      <div class="callout">Si te agreden en zona segura, toma pruebas y espera que termine el rol para reportar por ticket.</div>
+      <h3 class="sub">13.2 — Zonas rojas</h3>
+      <p>HQ de mafias o bandas: zona conflictiva donde se puede matar, robar y secuestrar. Para declararla oficialmente se abre ticket en Discord con el formato del Ayudante de Facciones Ilegales.</p>
+    </article>
+
+    <!-- ART 14 -->
+    <article class="article page" id="art14">
+      <div class="article-head"><span class="art-num">ART. 14</span><h2>Uso de dudas / report</h2></div>
+      <ul>
+        <li>Prohibido usar una duda para reaparecer o reparar el auto sin motivo de peso — se sanciona como <strong>MUD</strong>.</li>
+        <li>Sin EMS: esperar 15 min para aparecer vivo en el hospital. Sin mecánico: esperar respawn del staff.</li>
+        <li>Prohibido usar <strong>/duda</strong> a mitad de un rol. Toma pruebas y reporta al terminar.</li>
+        <li>Al mandar una duda, especifica el motivo. <strong>/duda "ayuda"</strong> no será atendido.</li>
+      </ul>
+    </article>
+
+    <!-- ART 15 -->
+    <article class="article page" id="art15">
+      <div class="article-head"><span class="art-num">ART. 15</span><h2>Normativa de facciones ilegales</h2></div>
+      <ul>
+        <li>Una mafia no puede aliarse directamente con otra ni intercambiar información para atacar.</li>
+        <li>Toda facción ilegal comienza con rol de "barrio" y sube conquistando territorio: Barrio → Familia → Mafia → Cartel.</li>
+        <li>Lo máximo permitido entre mafias es un <strong>pacto de no agresión</strong> y acuerdos económicos.</li>
+        <li>Las bandas no pueden aliarse entre sí salvo contra PD o EJC (máximo 2 bandas).</li>
+      </ul>
+      <div class="callout"><strong>Pacto de no agresión:</strong> puede romperse en cualquier momento sin aviso. No aplica en puntos calientes. No puede hacerse entre 2 bandas.</div>
+    </article>
+
+    <!-- ART 16 -->
+    <article class="article page" id="art16">
+      <div class="article-head"><span class="art-num">ART. 16</span><h2>Entornos y zonas de bases</h2></div>
+      <p>Las bases de bandas son lo que realmente son: si no hay miembros presentes, no se pueden rolear NPCs defendiendo. No son zonas intocables — para atacarlas se necesita ticket aprobado.</p>
+      <p>Las bases de mafias son más discretas por su naturaleza. Se recomienda mantener perfil bajo y cambiar de ubicación periódicamente para no ser descubiertas.</p>
+    </article>
+
+    <!-- ART 17 -->
+    <article class="article page" id="art17">
+      <div class="article-head"><span class="art-num">ART. 17</span><h2>Tiempos de baneo</h2></div>
+      <table class="sanctions">
+        <thead><tr><th>Infracción</th><th>Sanción</th></tr></thead>
+        <tbody>
+          <tr><td>Desconectarse de un rol usando /quit</td><td class="time">72 h (3 días)</td></tr>
+          <tr><td>Cambiarse de PJ en medio de un rol</td><td class="time">96 h (4 días)</td></tr>
+          <tr><td>Acoso / Roles sensibles — Hombres</td><td class="time">144 h (6 días)</td></tr>
+          <tr><td>Acoso / Roles sensibles — Mujeres</td><td class="time">240 h (10 días)</td></tr>
+          <tr><td>Discriminación / Xenofobia</td><td class="time">96 h (4 días)</td></tr>
+          <tr><td>Insulto masivo al equipo administrativo</td><td class="time">168 h (7 días)</td></tr>
+          <tr><td>Insulto máximo al servidor</td><td class="perm">Permanente</td></tr>
+          <tr><td>Venta de objetos IC con dinero OOC</td><td class="perm">Permanente</td></tr>
+          <tr><td>No valorar la vida del personaje (NVVPJ)</td><td class="time">168 h (7 días)</td></tr>
+          <tr><td>Abusar de un bug y no notificarlo</td><td class="perm">Permanente</td></tr>
+          <tr><td>Abusar de un bug mínimo</td><td class="time">192 h (8 días)</td></tr>
+          <tr><td>Corrupción en la PD sin autorización</td><td class="time">120 h (5 días)</td></tr>
+          <tr><td>Acumulación de 10 sanciones</td><td class="time">192 h (8 días)</td></tr>
+        </tbody>
+      </table>
+    </article>
+    <div class="pagenav" id="pagenav"></div>
+  </main>
+</div>
+
+<!-- FLOATING DISCORD -->
+<a href="https://discord.gg/mta-proyecto-colombia-origenes-521706171300577283" target="_blank" rel="noopener" class="floating-discord">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127c-.598.35-1.22.645-1.873.893a.076.076 0 0 0-.04.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.001-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+  <span>Discord</span>
+</a>
+
+<footer>
+  <img src="logo.png" alt="Proyecto Colombia V1 Roleplay">
+  <div>Proyecto Colombia V1 Roleplay · Normativa General</div>
+  <div style="margin-top:5px;opacity:.6;">El desconocimiento de la normativa no exime de su cumplimiento.</div>
+</footer>
+
+<script>
+// ---- SPLASH ----
+(function(){
+  function endSplash(){
+    const s = document.getElementById('splash');
+    s.classList.add('hide');
+    document.body.classList.remove('loading');
+    setTimeout(()=>{ if(s.parentNode) s.remove(); }, 900);
+  }
+
+  if(sessionStorage.getItem('pc_intro_seen')){
+    document.getElementById('splash').style.transition='none';
+    endSplash();
+  } else {
+    sessionStorage.setItem('pc_intro_seen','1');
+    setTimeout(endSplash, 2800);
+  }
+  document.getElementById('splash').addEventListener('click', endSplash);
+})();
+
+// ---- NAV: una sección a la vez ----
+const links = document.querySelectorAll('.nav-link');
+const pages = document.querySelectorAll('.page');
+const sidebar = document.getElementById('sidebar');
+const menuBtn = document.getElementById('menuBtn');
+const overlay = document.getElementById('overlay');
+const brandLogo = document.getElementById('brandLogo');
+
+// ---- Orden de páginas y grupos, tomado directamente del sidebar (estilo GitBook) ----
+const navOrder = Array.from(links).map(l=>{
+  let group = l.previousElementSibling;
+  while(group && !group.classList.contains('nav-label')){ group = group.previousElementSibling; }
+  return {
+    id: l.dataset.target,
+    label: l.querySelector('.lbl') ? l.querySelector('.lbl').textContent.trim() : l.textContent.trim(),
+    group: group ? group.textContent.trim() : ''
+  };
+});
+
+const breadcrumbText = document.getElementById('breadcrumbText');
+const pagenav = document.getElementById('pagenav');
+const copyPageBtn = document.getElementById('copyPageBtn');
+const actionsMenu = document.getElementById('actionsMenu');
+const amCopyLink = document.getElementById('amCopyLink');
+const amChatgpt = document.getElementById('amChatgpt');
+const amClaude = document.getElementById('amClaude');
+
+function currentPageUrl(){
+  const active = document.querySelector('.page.active');
+  return location.href.split('#')[0] + '#' + (active ? active.id : 'home');
+}
+
+function updateAiLinks(){
+  const url = currentPageUrl();
+  const prompt = `Lee ${url} y responde preguntas sobre el contenido.`;
+  amChatgpt.href = 'https://chatgpt.com/?q=' + encodeURIComponent(prompt);
+  amClaude.href = 'https://claude.ai/new?q=' + encodeURIComponent(prompt);
+}
+
+function renderPageNav(targetId){
+  const idx = navOrder.findIndex(p=>p.id===targetId);
+  const prev = idx>0 ? navOrder[idx-1] : null;
+  const next = idx>=0 && idx<navOrder.length-1 ? navOrder[idx+1] : null;
+  pagenav.innerHTML = `
+    ${prev ? `<div class="pagenav-card prev" data-target="${prev.id}"><div class="pn-dir">‹ Anterior</div><div class="pn-title">${prev.label}</div></div>` : '<div class="pagenav-card empty"></div>'}
+    ${next ? `<div class="pagenav-card next" data-target="${next.id}"><div class="pn-dir">Siguiente ›</div><div class="pn-title">${next.label}</div></div>` : ''}
+  `;
+  pagenav.querySelectorAll('.pagenav-card[data-target]').forEach(c=>{
+    c.addEventListener('click', ()=> showPage(c.dataset.target));
+  });
+}
+
+function showPage(targetId){
+  pages.forEach(p=>{
+    p.classList.remove('in');
+    p.classList.toggle('active', p.id === targetId);
+  });
+  links.forEach(l=>l.classList.toggle('active', l.dataset.target === targetId));
+  // pequeño fade al mostrar la sección elegida
+  requestAnimationFrame(()=>{
+    const active = document.getElementById(targetId);
+    if(active){ requestAnimationFrame(()=>active.classList.add('in')); }
+  });
+  const current = navOrder.find(p=>p.id===targetId);
+  if(breadcrumbText){ breadcrumbText.textContent = current ? (current.group || current.label) : 'Inicio'; }
+  renderPageNav(targetId);
+  updateAiLinks();
+  window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+}
+
+if(copyPageBtn){
+  copyPageBtn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    actionsMenu.classList.toggle('open');
+  });
+}
+document.addEventListener('click', (e)=>{
+  if(actionsMenu && !e.target.closest('#contentActions')){ actionsMenu.classList.remove('open'); }
+});
+if(amCopyLink){
+  amCopyLink.addEventListener('click', async ()=>{
+    try{ await navigator.clipboard.writeText(currentPageUrl()); }catch(e){}
+    const t = amCopyLink.querySelector('.am-title');
+    const original = t.textContent;
+    t.textContent = '¡Enlace copiado!';
+    setTimeout(()=>{ t.textContent = original; actionsMenu.classList.remove('open'); }, 1200);
+  });
+}
+
+links.forEach(l=>l.addEventListener('click',()=>{
+  showPage(l.dataset.target);
+  sidebar.classList.remove('open'); overlay.classList.remove('show');
+}));
+if(brandLogo){
+  brandLogo.addEventListener('click', ()=>{
+    showPage('home');
+    sidebar.classList.remove('open'); overlay.classList.remove('show');
+  });
+}
+menuBtn.addEventListener('click',()=>{sidebar.classList.toggle('open');overlay.classList.toggle('show');});
+overlay.addEventListener('click',()=>{sidebar.classList.remove('open');overlay.classList.remove('show');});
+
+// Mostrar "Bienvenida" al cargar
+showPage('home');
+
+// ---- COPY IP ----
+document.getElementById('copyBtn').addEventListener('click',async()=>{
+  const text = document.getElementById('ipCode').textContent.trim();
+  try{await navigator.clipboard.writeText(text);}catch(e){
+    const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+  }
+  const btn=document.getElementById('copyBtn');
+  btn.textContent='✅';btn.classList.add('copied');
+  setTimeout(()=>{btn.textContent='📋';btn.classList.remove('copied');},1800);
+});
+</script>
+</body>
+</html>
